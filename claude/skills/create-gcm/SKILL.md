@@ -46,9 +46,11 @@ Examples:
 2. Derive the commit message from the staged diffs.
 3. If a scope is needed, ask the developer or determine it from previous
    commits in the same branch.
-4. Describe the "why" of the changes and why the proposed solution is the
+4. The title must be concrete and specific. Clearly state what was
+   changed, avoid abstract or vague descriptions.
+5. Describe the "why" of the changes and why the proposed solution is the
    right one. Limit prose.
-5. Write commit messages in traditional Chinese.
+6. Write commit messages in traditional Chinese.
 
 [Formatting]
 6. The title of the commit message should not exceed 50 characters.
