@@ -5,3 +5,6 @@ source "$SCRIPT_DIR/envs.rc"
 cat "$SCRIPT_DIR/envs.rc" >> /etc/sandbox-persistent.sh
 
 ln -sf "$SCRIPT_DIR/../claude/skills" ~/.claude/skills
+
+git config --global user.name "rmhsiao"
+git config --global user.email "rumao8341@gmail.com"
