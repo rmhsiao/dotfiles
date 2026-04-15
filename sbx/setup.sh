@@ -1,3 +1,6 @@
+
+# ===== 環境參數設定 =====
+
 # 取得腳本所在的資料夾路徑
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -6,5 +9,23 @@ cat "$SCRIPT_DIR/envs.rc" >> /etc/sandbox-persistent.sh
 
 ln -s "$SCRIPT_DIR/../claude/skills" ~/.claude/skills || echo "[skip] ~/.claude/skills 已存在或無法建立軟連結"
 
+
+# ===== git =====
+
 git config --global user.name "rmhsiao"
 git config --global user.email "rumao8341@gmail.com"
+
+
+# ===== bun =====
+
+curl -fsSL https://bun.sh/install | bash
+
+cat >> /etc/sandbox-persistent.sh <<'EOF'
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+EOF
+
+# 讓 claude 的 sub process shell 也能存取到 bun
+ln -sf /home/agent/.bun/bin/bun /usr/local/bin/bun
