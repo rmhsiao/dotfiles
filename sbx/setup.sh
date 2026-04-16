@@ -28,4 +28,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 EOF
 
 # 讓 claude 的 sub process shell 也能存取到 bun
-ln -sf /home/agent/.bun/bin/bun /usr/local/bin/bun
+sudo ln -sf /home/agent/.bun/bin/bun /usr/local/bin/bun
