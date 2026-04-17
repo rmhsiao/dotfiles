@@ -1,1 +1,7 @@
 alias ll="ls -alh"
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# 讓 gh 等指令不會只驗證無 gh_token 就報錯，而是直接打 request 出去並透過 sbx proxy 驗證
+export GH_HOST=github.com
