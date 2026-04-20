@@ -16,6 +16,10 @@ git config --global user.name "rmhsiao"
 git config --global user.email "rumao8341@gmail.com"
 
 
+# ===== uv =====
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+
 # ===== bun =====
 
 curl -fsSL https://bun.sh/install | bash
