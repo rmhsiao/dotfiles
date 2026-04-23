@@ -12,7 +12,7 @@ cat "$SCRIPT_DIR/envs.rc" >> /etc/sandbox-persistent.sh
 
 setup_symlinks() {
   for link in "$@"; do
-    ln -s "$SCRIPT_DIR/../claude/$link" ~/.claude/"$link" || echo "[skip] ~/.claude/$link 已存在或無法建立軟連結"
+    ln -s "$SCRIPT_DIR/../.claude/$link" ~/.claude/"$link" || echo "[skip] ~/.claude/$link 已存在或無法建立軟連結"
   done
 }
 
