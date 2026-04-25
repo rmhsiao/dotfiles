@@ -3,6 +3,7 @@
 
 # 取得腳本所在的資料夾路徑
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 source "$SCRIPT_DIR/envs.rc"
 cat "$SCRIPT_DIR/envs.rc" >> /etc/sandbox-persistent.sh
@@ -12,7 +13,10 @@ cat "$SCRIPT_DIR/envs.rc" >> /etc/sandbox-persistent.sh
 
 setup_symlinks() {
   for link in "$@"; do
-    ln -s "$SCRIPT_DIR/../.claude/$link" ~/.claude/"$link" || echo "[skip] ~/.claude/$link 已存在或無法建立軟連結"
+    local target=~/.claude/"$link"
+    # ln -sf 碰到已存在的目錄不會取代，需先移除
+    [ -d "$target" ] && [ ! -L "$target" ] && rm -r "$target"
+    ln -sf "$ROOT_DIR/.claude/$link" "$target" || echo "[skip] $target 無法建立軟連結"
   done
 }
 
