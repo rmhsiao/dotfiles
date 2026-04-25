@@ -7,11 +7,11 @@
 - **角色**: 資深演算法 / R&D 工程師，LLM 產品化方向
 - **年資**: ~5 年，屬於 mid-senior
 - **專長三層**:
-  1. **強項**: RAG 系統、Guardrails（NeMo Guardrails、PII 偵測、prompt injection 防禦）、vLLM 部署、結構化輸出（xgrammar / outlines）、Embedding/Reranker 模型部署
-  2. **熟悉**: Python、Docker、LangChain/LangGraph、FastAPI、NER/PII（Presidio、GLiNER）、OWASP LLM Top 10、Celery
+  1. **強項**: RAG 系統、Guardrails（NeMo Guardrails、PII 偵測、prompt injection 防禦）、vLLM 部署、結構化輸出、Embedding/Reranker 模型部署
+  2. **熟悉**: Python、Docker、LangChain/LangGraph、FastAPI、NER/PII、OWASP LLM Top 10、Celery
   3. **領域經驗**: 金融（證券業），中文處理、客服/通話語音場景
-- **興趣方向（換工作時會加分）**: AI Agent infra、Model deployment、LLM evaluation、安全/對齊
-- **避開**: 純前端、純 DevOps、偏 data engineering（非 ML）、純管理職、只會用 OpenAI API 沒底層的 wrapper 角色
+- **興趣方向（換工作時會加分）**: AI Agent
+- **避開**: 純前端、純 DevOps、偏 data engineering（非 ML）、純管理職
 
 ## 評分維度
 
@@ -31,7 +31,9 @@
 - `1`: 1–2 個強項命中，或多個熟悉層命中
 - `0`: 只有 Python 這種泛用技能命中
 
-**強項命中關鍵字**: RAG、retrieval augmented、vector、embedding、reranker、guardrails、prompt injection、vLLM、serving、inference、deploy LLM、structured output、NeMo、LangGraph、agent framework、fine-tun、LoRA、evaluation、red team
+**強項命中關鍵字**: RAG、retrieval augmented、vector、embedding、reranker、guardrails、prompt injection、vLLM、serving、inference、deploy LLM、structured output、NeMo、LangGraph、agent framework、evaluation、red team
+
+**重點：`condition.specialty[]` 經常是空陣列**，雇主在 104 後台沒填那欄是常態（實測 5 筆 Content API 結果有 3 筆是空的，比例不低）。所以 **`jobDescription` 是主要訊號來源**，specialty 命中當加成；**絕對不要因為 specialty 空就直接判 0 分**——那會把寫得最詳細的 JD（通常是 senior 職）誤殺。實作上：先用 `jobDescription` 全文掃強項關鍵字定基礎分，specialty 有命中再考慮上修。
 
 ### 3. Seniority fit (0–2)
 
@@ -53,10 +55,10 @@
 看到以下扣分：
 
 - 要求外派（中國/東南亞）: -1
-- 薪資區間明顯偏低（月薪 < 80k 且寫數字，非面議）: -1
+- 薪資區間明顯偏低（月薪 < 70k 且寫數字，非面議）: -1
 - JD 寫得很空泛、像拼湊關鍵字: -1
 - 僅要求「會用 OpenAI API」，沒有任何深度: -1
-- 要求 9–10 小時輪班、「可配合加班」用粗體: -1
+- 要求 9–10 小時輪班: -1
 
 起始 2 分，每個 red flag 扣 1，最低 0。
 

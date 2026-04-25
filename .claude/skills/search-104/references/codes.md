@@ -14,7 +14,7 @@
 | 兩週內 | `14` |
 | 一個月內 | `30` |
 
-Default for "recent" / "最近": `7`。
+Default for "recent" / "最近": `14`。
 
 ## jobexp (經歷要求 — 年數)
 

@@ -1,5 +1,5 @@
 ---
-name: tpi-104-job-search
+name: search-104
 description: Searches the 104 人力銀行 (104.com.tw) job board via its public JSON APIs and returns results tailored for a Taiwan-based AI/LLM engineer evaluating career moves. Use this skill whenever the user asks to find, search, browse, or evaluate jobs on 104 — including phrases like "幫我找 104 上的...職缺", "search 104 for AI engineer jobs", "有什麼新的 LLM 職缺", "看看 104 有沒有...在徵人", or any time the user wants to filter Taiwan job listings by keyword, location, job category, or experience level. Also triggers when the user gives a 104 job URL or job ID and wants it summarized or evaluated. Do NOT use for LinkedIn, CakeResume, Yourator, or other boards.
 ---
 
@@ -23,7 +23,7 @@ If the user's request is specific enough (e.g. "find LLM engineer jobs in Taipei
 
 - **Keyword**: what to search for (`LLM`, `RAG`, `MLOps`, etc.)
 - **Location**: defaults to Taipei + New Taipei (`6001001000,6001002000`) unless the user says otherwise
-- **Recency**: if they say "recent" / "new" / "最近", use `isnew=7` (past week)
+- **Recency**: if they say "recent" / "new" / "最近", use `isnew=14` (past two weeks)
 
 Do not interrogate — one short clarifying question at most. When in doubt, pick a sensible default, state the assumption, and proceed.
 
@@ -79,6 +79,22 @@ If both `area` and `jobcat` need resolving, spawn the two subagent calls **in pa
 
 Parse the subagent's `codes:` line and use it directly as the `area` or `jobcat` param value.
 
+**After the subagent(s) return — confirm with the user before proceeding**
+
+Display a short summary of what will be searched and wait for the user to confirm:
+
+```
+將以以下條件搜尋，確認後繼續：
+
+- 關鍵字：<keyword>
+- 區域：<resolved area names, e.g. 台北市、新北市>（如未限定則寫「不限」）
+- 職務類型：<resolved jobcat leaf names>（如未限定則寫「不限」）
+- 刊登時間：<isnew 對應的中文，如 兩週內>
+- 其他條件：<workExp, edu, remoteWork 若有設定>
+```
+
+Wait for explicit confirmation (e.g. 「好」「確認」「繼續」「ok」 or any clearly positive signal) before calling the Search API. If the user wants to adjust the area or job category, update the codes and confirm again. This pause costs almost nothing and prevents burning API quota on a mis-specified query.
+
 **When to skip jobcat entirely**
 
 For AI/LLM searches where the user didn't name a category explicitly, prefer **keyword-only** search (`keyword=LLM` or `keyword=AI工程師`) and don't call the jobcat subagent. Adding `jobcat` too narrowly filters out relevant postings categorised as "軟體工程師" rather than "AI工程師".
@@ -95,6 +111,12 @@ From the Search API response, extract ONLY these fields per job (everything else
 - `coIndustryDesc` (industry — useful for context)
 
 Drop internal tracking fields like `hrBehaviorPR`, `interactionRecord`, `major`, etc.
+
+**Merging multiple keyword searches**
+
+When the user's intent spans more than one keyword (e.g., "LLM 和 AI Agent 相關職缺"), run each keyword as a separate Search API call **in parallel** in the same turn, then merge by `jobId`. Cross-keyword overlap is the rule, not the exception — well-targeted jobs often surface under two related queries with the same `jobId`. Without dedup, you'll waste Content API budget pulling the same JD twice and the shortlist table will repeat entries.
+
+Merge rule: walk the keyword results **in the order the user listed them** (the first keyword is usually the most central). For each result, skip if its `jobId` is already in a `seen` set; otherwise append. The output order then preserves the most-relevant keyword's ranking, and jobs unique to later keywords get appended at the end. Don't try to "interleave" or re-rank globally — trust the per-keyword Search API ordering and only the user's keyword priority.
 
 ### Step 4 — Decide which jobs deserve Content API calls
 
