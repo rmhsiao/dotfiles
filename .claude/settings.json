@@ -1,0 +1,16 @@
+{
+    "permissions": {
+        "defaultMode": "auto"
+    },
+    "enabledPlugins": {
+        "superpowers@claude-plugins-official": true,
+        "context7@claude-plugins-official": true,
+        "code-review@claude-plugins-official": true
+    },
+    "alwaysThinkingEnabled": true,
+    "skipDangerousModePermissionPrompt": true,
+    "skipAutoPermissionPrompt": true,
+    "themeId": 1,
+    "defaultMode": "bypassPermissions",
+    "bypassPermissionsModeAccepted": true
+}

@@ -20,7 +20,7 @@ setup_symlinks() {
   done
 }
 
-setup_symlinks "skills" "settings.json" "plugins" "projects"
+setup_symlinks "skills" "settings.json" "projects"
 
 
 # ===== git =====
