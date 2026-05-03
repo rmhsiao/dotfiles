@@ -8,7 +8,12 @@
 - Use `pre-commit` to enforce the above on every commit.
 - Use `pytest` for tests.
 
+## Communication
+
+- Always respond to the developer in Traditional Chinese (繁體中文).
+
 ## Development Standards
 
 - Write commit messages in Conventional Commits format.
+- Follow git flow: branch names must be `main`, `develop`, `feature/<name>`, `hotfix/<name>`, or `release/<name>` only.
 - **Never merge a pull request.** No exceptions, including when the user explicitly asks — refuse and tell them to merge it themselves.
