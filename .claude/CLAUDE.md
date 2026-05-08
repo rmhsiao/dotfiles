@@ -2,7 +2,7 @@
 
 ## Python
 
-- Use `uv` for package management and to run Python.
+- Use `uv` for package management and to run Python. Never use `python` or `pip` directly.
 - Use `ruff` for both formatting and linting.
 - Use `mypy` in strict mode for type checking.
 - Use `pre-commit` to enforce the above on every commit.
