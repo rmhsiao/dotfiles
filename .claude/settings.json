@@ -1,8 +1,15 @@
 {
   "permissions": {
-    "defaultMode": "auto"
+    "ask": [
+      "Bash(rm -rf *)",
+      "Bash(python3 *)",
+      "Bash(pip3 *)",
+      "Edit(*/.claude/settings.json)",
+      "Edit(*/.claude/settings.local.json)",
+      "Edit(*/claude/settings.json)"
+    ]
   },
-  "model": "opus",
+  "model": "sonnet",
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
@@ -25,6 +32,6 @@
   "skipDangerousModePermissionPrompt": true,
   "skipAutoPermissionPrompt": true,
   "themeId": 1,
-  "defaultMode": "bypassPermissions",
+  "defaultMode": "acceptEdits",
   "bypassPermissionsModeAccepted": true
 }
