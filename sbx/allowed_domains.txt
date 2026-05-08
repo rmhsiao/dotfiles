@@ -4,8 +4,11 @@ discord.com
 cdn.discordapp.com
 media.discordapp.net
 
-# 104 人力銀行
-www.104.com.tw
-
 # uv (Python package manager)
 releases.astral.sh
+
+# github
+api.githubcopilot.com
+
+# 104 人力銀行
+www.104.com.tw
