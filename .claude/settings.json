@@ -9,11 +9,10 @@
       "Edit(*/claude/settings.json)"
     ],
     "allow": [
-      "Bash(uv run ruff check .)",
-      "Bash(uv run ruff format --check .)",
+      "Bash(uv run ruff check *)",
+      "Bash(uv run ruff format --check *)",
       "Bash(uv run mypy *)",
       "Bash(uv run pytest *)",
-      "Bash(uv run pytest --tb=short)",
       "Bash(uv run pre-commit run --all-files)",
       "Bash(git add *)",
       "Bash(git commit *)",
