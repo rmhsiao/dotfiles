@@ -22,3 +22,4 @@
 ## Code Conventions
 
 - Always write error messages in English.
+- Order methods top-to-bottom in the sequence they are called.
