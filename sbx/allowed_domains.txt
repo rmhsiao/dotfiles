@@ -10,5 +10,10 @@ releases.astral.sh
 # github
 api.githubcopilot.com
 
+# docs
+context7.com
+api.python.langchain.com
+python.langchain.com
+
 # 104 人力銀行
 www.104.com.tw
