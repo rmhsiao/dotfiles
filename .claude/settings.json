@@ -1,13 +1,5 @@
 {
   "permissions": {
-    "ask": [
-      "Bash(rm -rf *)",
-      "Bash(python3 *)",
-      "Bash(pip3 *)",
-      "Edit(*/.claude/settings.json)",
-      "Edit(*/.claude/settings.local.json)",
-      "Edit(*/claude/settings.json)"
-    ],
     "allow": [
       "Bash(uv run ruff check *)",
       "Bash(uv run ruff format --check *)",
@@ -16,7 +8,21 @@
       "Bash(uv run pre-commit run --all-files)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Skill(commit-commands:commit-push-pr)"
+      "Skill(commit-commands:commit-push-pr)",
+      "WebFetch(domain:python.langchain.com)",
+      "WebFetch(domain:api.python.langchain.com)",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs"
+    ],
+    "ask": [
+      "Bash(rm -rf *)",
+      "Edit(*/.claude/settings.json)",
+      "Edit(*/.claude/settings.local.json)",
+      "Edit(*/claude/settings.json)"
+    ],
+    "deny": [
+      "Bash(python3 *)",
+      "Bash(pip3 *)"
     ]
   },
   "model": "sonnet",
@@ -40,6 +46,7 @@
   },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "skipAutoPermissionPrompt": true,
   "themeId": 1,
   "defaultMode": "acceptEdits",
