@@ -13,6 +13,7 @@ version: 0.1.0
 | 檔案 | 簡介 |
 |------|------|
 | [`references/uv-venv-no-symlink.md`](references/uv-venv-no-symlink.md) | `uv sync` / `uv venv` 在 `/d/` 等不支援 symlink 的掛載檔案系統上失敗（`Operation not permitted`），需透過 `UV_PROJECT_ENVIRONMENT` 將 venv 移至 `/home/agent/.venvs/` |
+| [`references/git-commit-msg-buffer-leak.md`](references/git-commit-msg-buffer-leak.md) | commit message 尾端被附加前一筆 commit 的內容（subject 變成 `<新訊息><舊訊息尾段>`），邊界可能出現 `¾` `¤` `¹` 等亂碼。根因是 sandbox overlay fs 不 honour `.git/COMMIT_EDITMSG` 的 truncate-on-write，新短訊息只覆蓋前 N byte、舊內容尾段殘留 |
 
 ## 新增問題的格式
 

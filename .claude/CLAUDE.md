@@ -23,3 +23,14 @@
 
 - Always write error messages in English.
 - Order methods top-to-bottom in the sequence they are called.
+
+## Sandbox Environment
+
+Workarounds for known quirks of the sandbox (overlay fs, etc.). Apply only
+when running inside the sandbox.
+
+- **Before any `git commit`, run
+  `[ -f .git/COMMIT_EDITMSG ] && rm .git/COMMIT_EDITMSG`.** Avoids
+  overlay-fs truncate quirk that leaks the previous commit message tail
+  into the new one. See `troubleshoot` skill →
+  `references/git-commit-msg-buffer-leak.md` for full details.
