@@ -14,15 +14,15 @@
       "mcp__plugin_context7_context7__resolve-library-id",
       "mcp__plugin_context7_context7__query-docs"
     ],
+    "deny": [
+      "Bash(python3 *)",
+      "Bash(pip3 *)"
+    ],
     "ask": [
       "Bash(rm -rf *)",
       "Edit(*/.claude/settings.json)",
       "Edit(*/.claude/settings.local.json)",
       "Edit(*/claude/settings.json)"
-    ],
-    "deny": [
-      "Bash(python3 *)",
-      "Bash(pip3 *)"
     ]
   },
   "model": "sonnet",
