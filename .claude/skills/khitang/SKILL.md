@@ -4,7 +4,7 @@ description: Developer's personal coding philosophy and collaboration norms for 
 version: 1.1.0
 ---
 
-# khitang — 開發協作規範
+# khí-tâng（khitang）— 開發協作規範
 
 ## 1. 你的工作品味
 
