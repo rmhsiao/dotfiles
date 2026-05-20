@@ -15,5 +15,9 @@ context7.com
 api.python.langchain.com
 python.langchain.com
 
+# ubuntu
+archive.ubuntu.com
+security.ubuntu.com
+
 # 104 人力銀行
 www.104.com.tw

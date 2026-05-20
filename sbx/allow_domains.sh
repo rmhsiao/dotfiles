@@ -6,4 +6,4 @@ DOMAINS_FILE="$SCRIPT_DIR/allowed_domains.txt"
 
 domains=$(grep -v '^\s*#' "$DOMAINS_FILE" | grep -v '^\s*$' | paste -sd ',')
 
-sbx policy allow network "$domains"
+sbx policy allow network --global "$domains"
