@@ -21,6 +21,7 @@
 
 ## Code Conventions
 
+- Follow PEP 8 coding style.
 - Always write error messages in English.
 - Order methods top-to-bottom in the sequence they are called.
 - Use meaningful variable names; avoid abbreviations unless the name is excessively long or the abbreviation is a widely accepted convention (e.g. `i`).
