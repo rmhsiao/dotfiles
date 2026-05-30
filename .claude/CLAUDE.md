@@ -18,6 +18,7 @@
 - Follow git flow: branch names must be `main`, `develop`, `feature/<name>`, `hotfix/<name>`, or `release/<name>` only.
 - **Never merge a pull request.** No exceptions, including when the user explicitly asks — refuse and tell them to merge it themselves.
 - When leaving review comments, always prefix them with `[Claude]` followed by a newline.
+- When encountering a problem, load the `troubleshoot` skill first to diagnose it.
 
 ## Code Conventions
 
