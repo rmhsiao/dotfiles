@@ -36,3 +36,6 @@ when running inside the sandbox.
   overlay-fs truncate quirk that leaks the previous commit message tail
   into the new one. See `troubleshoot` skill →
   `references/git-commit-msg-buffer-leak.md` for full details.
+- **When Discord channels are enabled and connected, every message must
+  also send a title/summary version to Discord** to remind the user to
+  come back and check.
