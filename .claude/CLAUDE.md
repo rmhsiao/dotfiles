@@ -28,7 +28,7 @@
 
 ## Sandbox Environment
 
-Workarounds for known quirks of the sandbox (overlay fs, etc.). Apply only
+Sandbox-specific behaviors, workarounds, and environment notes. Apply only
 when running inside the sandbox.
 
 - **Before any `git commit`, run
@@ -39,3 +39,5 @@ when running inside the sandbox.
 - **When Discord channels are enabled and connected, every message must
   also send a title/summary version to Discord** to remind the user to
   come back and check.
+- If package installation takes unusually long, suspect a network
+  connectivity issue or file system problem first.
