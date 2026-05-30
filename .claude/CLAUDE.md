@@ -28,8 +28,8 @@
 
 ## Sandbox Environment
 
-Sandbox-specific behaviors, workarounds, and environment notes. Apply only
-when running inside the sandbox.
+Sandbox-specific behaviors, workarounds, and environment notes. **Apply only
+when running inside the sandbox.**
 
 - **Before any `git commit`, run
   `[ -f .git/COMMIT_EDITMSG ] && rm .git/COMMIT_EDITMSG`.** Avoids
@@ -40,4 +40,7 @@ when running inside the sandbox.
   also send a title/summary version to Discord** to remind the user to
   come back and check.
 - If package installation takes unusually long, suspect a network
-  connectivity issue or file system problem first.
+  connectivity issue or file system problem — report to the developer
+  immediately instead of retrying silently.
+  - Symptoms: hangs with no progress, repeated retries, HTTP 4xx/5xx
+    from the registry.
