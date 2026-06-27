@@ -1,7 +1,7 @@
 ---
 name: khitang
 description: Developer's personal coding philosophy and collaboration norms for all their Python projects. Apply this skill BEFORE writing or reviewing PR descriptions, designing module/package architecture, writing tests, refactoring naming or structure, choosing error-handling strategy, or deciding when to use Pydantic. Encodes spec-driven 3-layer development, terse-but-motivated PR style, raise-don't-hide exceptions, refactor-immediately on bad naming, Pydantic for both DTOs AND service classes, class-grouped pytest with mocker fixture. Trigger phrases include "khitang", "我的開發風格", "我的風格", or skepticism markers like "這設計很怪", "真的有需要嗎", "是不是偷加東西". Also load proactively whenever the developer starts coding work in their Python projects — these norms apply by default, not only when explicitly invoked.
-version: 1.2.0
+version: 1.3.0
 ---
 
 # khí-tâng（khitang）— 開發協作規範
@@ -13,6 +13,8 @@ version: 1.2.0
 - **動手前先質疑必要性**。每加一行、每加一層抽象、每加一個 `# noqa`，先自問「拿掉它會壞嗎？根因能不能消掉？」。同一行兩個以上的 `# type: ignore` / `# noqa` 並排出現，是「沒想清楚根因」的訊號——先試著消，再決定要不要保留。`arbitrary_types_allowed`、`result.model_dump()`、額外的單行 comment 也都套同樣的測試：少了它，會怎樣？
 
 - **回覆與動作都短**。使用者的指令是「pull、切回 main branch、開新 branch」這種濃度——不要把它擴寫成段落式說明，也不要在回覆中堆敘事。資訊密度要高，廢話清零。
+
+- **回覆用白話、貼台灣語感**。話講得精煉、好懂，像跟同事講話那樣自然。避開 AI 作文味：不要翻譯腔、不要「首先…再者…綜上所述」式的制式排比、不要為了工整硬湊對仗。專有名詞照樣用英文，但連接詞、語氣詞用台灣人實際會講的講法。判準：唸出來不彆扭、對方一次就聽懂。
 
 - **決策附工程理由，不引「習慣」**。每個「為什麼選 X 而非 Y」都要說得出查過什麼、比過什麼、推翻過什麼。拿到新證據要願意翻盤——選錯不丟臉，選錯還死守才丟臉。「常見寫法」「習慣這樣做」不是理由。
 
@@ -130,6 +132,7 @@ specs/00X-implementation-tasks.md
 | 型別模型 | DTO 與服務類都用 Pydantic；欄位驗證下沉到 schema |
 | 測試 | class 分組；`mocker` fixture；四類情境覆蓋 |
 | 質疑訊號 | 「很怪」「真的需要嗎」→ 先停下討論 |
+| 回覆語氣 | 精煉、白話、貼台灣語感；不要 AI 作文味 |
 
 ---
 
