@@ -1,7 +1,7 @@
 ---
 name: khitang
 description: Developer's personal coding philosophy and collaboration norms for all their Python projects. Apply this skill BEFORE writing or reviewing PR descriptions, designing module/package architecture, writing tests, refactoring naming or structure, choosing error-handling strategy, or deciding when to use Pydantic. Encodes spec-driven 3-layer development, terse-but-motivated PR style, raise-don't-hide exceptions, refactor-immediately on bad naming, Pydantic for both DTOs AND service classes, class-grouped pytest with mocker fixture. Trigger phrases include "khitang", "我的開發風格", "我的風格", or skepticism markers like "這設計很怪", "真的有需要嗎", "是不是偷加東西". Also load proactively whenever the developer starts coding work in their Python projects — these norms apply by default, not only when explicitly invoked.
-version: 1.1.0
+version: 1.2.0
 ---
 
 # khí-tâng（khitang）— 開發協作規範
@@ -72,7 +72,13 @@ specs/00X-implementation-tasks.md
 - 業務「被擋下」與基礎設施「壞掉」是**完全不同語意**——例如用 LLM 做安全狀態分類時，把連線錯誤暗自轉成 `status="blocked"` 就是典型混淆，會讓呼叫端拿到錯誤的事實。
 - **不替呼叫端預設降級行為**。重試、降級、回應錯誤訊息由呼叫端決定，不在 library 層悄悄處理掉。
 
-### 4.3 註解與 docstring
+### 4.3 Commit 粒度：一個 atomic 範圍一個 commit
+
+- **每完成一個 atomic 的範圍就 commit**——一個 commit 只做一件邏輯上完整、可獨立描述的事。不要堆一堆改動才一次送出。
+- **判準**：commit message 一句話講得清楚、拿掉它不會讓其餘改動壞掉，就是一個合理的 atomic 範圍。需要用「而且」「順便」串起多件事，代表該拆。
+- **重構與功能分開 commit**——改名/搬移職責歸 refactor commit（見 4.1），新增/修改行為歸 feature commit，不混在同一個。
+
+### 4.4 註解與 docstring
 
 - **預設不寫**。識別字已交代 what。
 - **單行註解**只在以下情境寫：隱性限制、tie-break 規則、避開特定 bug 的 workaround、會讓讀者驚訝的行為。
@@ -120,6 +126,7 @@ specs/00X-implementation-tasks.md
 | 例外哲學 | 一律 raise，不轉成業務狀態、不靜默吞 |
 | 註解 | 預設不寫；多段 docstring 僅在邏輯複雜時補 |
 | 抽象 | MVP 為先；不滿意立刻 refactor，不等大改 |
+| Commit 粒度 | 一個 atomic 範圍一個 commit；refactor 與 feature 分開 |
 | 型別模型 | DTO 與服務類都用 Pydantic；欄位驗證下沉到 schema |
 | 測試 | class 分組；`mocker` fixture；四類情境覆蓋 |
 | 質疑訊號 | 「很怪」「真的需要嗎」→ 先停下討論 |
