@@ -30,7 +30,7 @@
 ## Sandbox Environment
 
 Sandbox-specific behaviors, workarounds, and environment notes. **Apply only
-when running inside the sandbox.**
+when running inside the docker sbx sandbox.**
 
 - **Before any `git commit`, run
   `[ -f .git/COMMIT_EDITMSG ] && rm .git/COMMIT_EDITMSG`.** Avoids
