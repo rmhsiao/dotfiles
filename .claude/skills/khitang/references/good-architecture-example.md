@@ -39,7 +39,7 @@
    入口要薄、要穩定。業務變動回流到入口介面，使用者每次升級都會痛。Facade 只做「依 config 組裝出 orchestrator + 註冊 module」這類無腦工作，加 log 就停手。
 
 2. **Orchestrator 為何不認識業務？**
-   只處理「並行 / 短路 / cancel / timeout / 彙整」這類**流程**動作。把業務塞進來會讓 orchestrator 跟特定 module 偶合，無法獨立測試或替換。判準：orchestrator 應該換掉所有 module 也能照常跑。
+   只處理「並行 / 短路 / cancel / timeout / 彙整」這類**流程**動作。把業務塞進來會讓 orchestrator 跟特定 module 耦合，無法獨立測試或替換。判準：orchestrator 應該換掉所有 module 也能照常跑。
 
 3. **每個 module 為何自包含？**
    `*Config`、output schema、`*Module` class 都放同檔；prompt template / 常數放 module-level。**新增 / 移除 module 只動一個檔**——這是真正的可替換性。若一個 module 散在三五個地方，移除它就要記住三五個位置，可替換性是假的。
