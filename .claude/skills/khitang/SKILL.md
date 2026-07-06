@@ -1,7 +1,7 @@
 ---
 name: khitang
 description: Developer's personal coding philosophy and collaboration norms for all their Python projects. Apply this skill BEFORE writing or reviewing PR descriptions, designing module/package architecture, writing tests, refactoring naming or structure, choosing error-handling strategy, or deciding when to use Pydantic. Encodes spec-driven 3-layer development, terse-but-motivated PR style, raise-don't-hide exceptions, refactor-immediately on bad naming, Pydantic for both DTOs AND service classes, class-grouped pytest with mocker fixture. Trigger phrases include "khitang", "我的開發風格", "我的風格", or skepticism markers like "這設計很怪", "真的有需要嗎", "是不是偷加東西". Also load proactively whenever the developer starts coding work in their Python projects — these norms apply by default, not only when explicitly invoked.
-version: 1.4.2
+version: 1.4.3
 ---
 
 # khí-tâng（khitang）— 開發協作規範
@@ -11,12 +11,11 @@ version: 1.4.2
 以下為預設態度，不需提醒即執行——這是工程基準，不是被指正後的姿態。
 
 - **動手前先質疑必要性**。每新增一行 code、一層抽象、一個 `# noqa`，先確認：拿掉會壞嗎？根因能否消除？
-  - 同一行出現兩個以上 `# type: ignore` / `# noqa`，代表根因未釐清——先消除，確定無法消除再保留。
   - `arbitrary_types_allowed`、`result.model_dump()`、多餘的單行 comment 適用同一檢驗：少了它會怎樣？
 
 - **回覆與動作精簡**。維持「pull、切回 main、開新 branch」這種指令濃度，不擴寫成段落、不堆疊敘事。資訊密度要高，刪去冗詞。
 
-- **文字內容用白話、貼台灣語感**。措辭精煉易懂，避免 AI 文體，適時用 markdown 排版。
+- **文字內容用白話、貼台灣語感**。措辭精煉易懂，避免 AI 文體，適時用 markdown 排版，確保整體內容的易讀性。
   - 不用翻譯腔、不用「首先…再者…綜上所述」式排比、不為工整刻意對仗。
   - 專有名詞保留英文；語氣詞用台灣慣用語。
   - 避免過長句子，可利用 markdown 格式拆分為清單。
@@ -43,7 +42,8 @@ version: 1.4.2
 ## 2. 規格驅動三層演進
 
 動手開發前必須先有 spec，且需與開發者共同討論產出。
-spec 不是一次寫完，而是三層遞進——任何「為什麼做這個」的問題，都應能在某一層找到答案。
+預設的 spec 撰寫流程如下，其中 spec 不是一次寫完，而是三層遞進 —— 任何「為什麼做這個」的問題，都應能在某一層找到答案。
+不過若使用者使用 openspec 或其他工具，只要符合類似慣例即可，可以以該工具的作法為主。
 
 ```
 specs/00X-init-spec.md
@@ -84,6 +84,7 @@ specs/00X-implementation-tasks.md
 - **三段類似的 code 勝過過早的抽象**——premature abstraction 比 duplication 更糟。
 - **重構是日常，不是負擔**。發現命名、職責、結構不對，**立即開 refactor commit**，不等下次大改。
 - 命名要精確反映語義。含糊的詞（如把工廠模式叫 registry、把優先序叫 order）一經發現立即改。
+- 同一行出現兩個以上 `# type: ignore` / `# noqa`，代表根因未釐清——先消除，確定無法消除再保留。
 
 ### 4.2 例外處理：失敗一律 raise，不隱藏
 
@@ -106,7 +107,6 @@ specs/00X-implementation-tasks.md
 - **多段式 docstring 可以存在**——僅在邏輯複雜到看 code 無法快速理解時，說明使用情境、輸入輸出語意、邊界條件。
   - 判準：讀完 docstring，不看實作細節也能正確使用該函式。
 - **不寫**：「used by X」「added for Y flow」、複述 well-named code 在做什麼、把 diff 內容再講一次。
-- 同一行兩個以上的 `# type: ignore` / `# noqa`，先檢視根因能否消除——能不加就不加。
 
 ---
 
@@ -167,6 +167,6 @@ specs/00X-implementation-tasks.md
 
 當前任務涉及架構設計、模組切分、職責邊界這類決策時，可讀：
 
-- `references/good-architecture-example.md`——本人過去某專案（async + LLM judge 類型）的架構結果，**不是範本**。
+- `references/good-architecture-example.md`—— 此為過去某專案（async + LLM judge 類型）的架構結果，**不是範本**。
   - 每個專案需求不同，這份不是用來照抄，而是看「同等品味之下，設計長什麼樣、決策依據是什麼」。
   - 要模仿的是背後的**取捨節奏**，不是檔案佈局。
